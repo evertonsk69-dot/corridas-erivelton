@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<title>Corridas Erivelton</title>
+<meta name="description" content="Solicite sua corrida particular com Erivelton Santos pelo celular.">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#0b0f17;--card:#121826;--muted:#97a3b6;--text:#f7f9fc;--accent:#22c55e;--line:#263143;--danger:#ef4444}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#0b0f17,#111827 40%,#0b0f17);color:var(--text)}
+.container{max-width:720px;margin:auto;padding:18px 14px 96px}.top{display:flex;gap:14px;align-items:center;margin:8px 0 18px}.avatar{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#1f2937;font-weight:800;font-size:22px;border:2px solid #374151}.grow{flex:1}.name{font-size:22px;font-weight:800}.sub{color:var(--muted);font-size:14px}.status{display:inline-flex;align-items:center;gap:7px;margin-top:6px;font-size:13px}.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #22c55e22}.grid{display:grid;gap:14px}.card{background:rgba(18,24,38,.96);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 10px 30px #00000022}.card h2{margin:0 0 12px;font-size:18px}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted)}input,select,textarea{width:100%;border:1px solid #334155;background:#0f172a;color:var(--text);border-radius:13px;padding:13px;font-size:16px;outline:none}input:focus,select:focus,textarea:focus{border-color:#64748b}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.route{display:grid;gap:10px}.price{display:flex;justify-content:space-between;align-items:center;background:#0f172a;border-radius:14px;padding:14px}.price strong{font-size:25px}.hint{font-size:12px;color:var(--muted);line-height:1.45}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:48px;border:none;border-radius:14px;padding:12px 16px;font-weight:800;font-size:16px;text-decoration:none;cursor:pointer}.btn-main{background:var(--accent);color:#06110a;width:100%}.btn-soft{background:#172033;color:var(--text);border:1px solid #334155}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.summary{display:none}.summary.show{display:block}.row{display:flex;justify-content:space-between;gap:15px;padding:8px 0;border-bottom:1px solid #243044}.row:last-child{border:0}.row span:first-child{color:var(--muted)}.mapbox{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0f172a;min-height:220px}.mapbox iframe{width:100%;height:220px;border:0}.notice{font-size:12px;color:var(--muted);margin-top:9px}.brand{position:fixed;left:0;right:0;bottom:0;background:#0b0f17ee;border-top:1px solid var(--line);backdrop-filter:blur(10px);padding:10px 14px}.brandin{max-width:720px;margin:auto;display:flex;gap:10px}.brand .btn{flex:1}.error{color:#fecaca;background:#7f1d1d55;border:1px solid #7f1d1d;padding:10px;border-radius:12px;display:none;font-size:13px}.error.show{display:block}@media(max-width:560px){.two,.actions{grid-template-columns:1fr}.container{padding-top:12px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <section class="top">
+    <div class="avatar" aria-label="Foto do motorista">ES</div>
+    <div class="grow"><div class="name">Erivelton Santos</div><div class="sub">Motorista particular</div><div class="status"><span class="dot"></span>Disponível para solicitações</div></div>
+    <a class="btn btn-soft" href="tel:+5511978305714" aria-label="Ligar">☎</a>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Solicitar corrida</h2>
+      <div class="route">
+        <div class="field"><label for="origin">Local de partida</label><input id="origin" placeholder="Ex.: Jardim Silveira, Barueri"></div>
+        <div class="field"><label for="dest">Destino</label><input id="dest" placeholder="Ex.: Centro de São Paulo"></div>
+      </div>
+      <div class="two" style="margin-top:12px">
+        <div class="field"><label for="km">Distância estimada (km)</label><input id="km" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="10"></div>
+        <div class="price"><div><div class="hint">Valor estimado</div><strong id="price">R$ 15,00</strong></div></div>
+      </div>
+      <div class="hint" style="margin-top:10px">Tarifa inicial R$ 5,00 + R$ 2,50/km • valor mínimo R$ 15,00.</div>
+    </section>
+
+    <section class="card">
+      <h2>Dados do passageiro</h2>
+      <div class="two">
+        <div class="field"><label for="name">Nome</label><input id="name" placeholder="Seu nome"></div>
+        <div class="field"><label for="phone">Telefone</label><input id="phone" type="tel" placeholder="(11) 99999-9999"></div>
+      </div>
+      <div class="two" style="margin-top:12px">
+        <div class="field"><label for="when">Quando?</label><select id="when"><option>Agora</option><option>Agendar</option></select></div>
+        <div class="field" id="dateWrap" style="display:none"><label for="date">Data e horário</label><input id="date" type="datetime-local"></div>
+      </div>
+      <div class="field" style="margin-top:12px"><label for="note">Observação</label><textarea id="note" rows="3" placeholder="Ex.: estou com bagagem"></textarea></div>
+      <label style="display:flex;gap:9px;align-items:center;margin-top:12px;font-size:14px"><input id="returnRide" type="checkbox" style="width:auto"> Preciso também de corrida de volta</label>
+      <div id="err" class="error" style="margin-top:12px"></div>
+      <button id="confirm" class="btn btn-main" style="margin-top:14px">Confirmar pedido</button>
+    </section>
+
+    <section class="card">
+      <h2>Mapa da rota</h2>
+      <div class="mapbox"><iframe id="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa"></iframe></div>
+      <div class="notice">O mapa abre a pesquisa da rota. A distância ainda é informada manualmente para calcular a estimativa.</div>
+    </section>
+
+    <section id="summary" class="card summary">
+      <h2>Pedido pronto</h2>
+      <div id="summaryRows"></div>
+      <div class="actions" style="margin-top:14px">
+        <a id="wa" class="btn btn-main" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+        <a class="btn btn-soft" href="tel:+5511978305714">Ligar agora</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="brand"><div class="brandin"><a class="btn btn-soft" href="tel:+5511978305714">Ligar</a><a class="btn btn-main" href="https://wa.me/5511978305714" target="_blank" rel="noopener">WhatsApp</a></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function calc(){
+  let km=parseFloat($('km').value)||0;
+  const total=Math.max(15,5+km*2.5);
+  $('price').textContent=money(total);
+  return {km,total};
+}
+function updateMap(){
+  const o=$('origin').value.trim(), d=$('dest').value.trim();
+  if(!o && !d){$('map').src='https://www.google.com/maps?q=São%20Paulo&output=embed';return;}
+  const q=encodeURIComponent((o?o:'')+(o&&d?' até ':'')+(d?d:''));
+  $('map').src='https://www.google.com/maps?q='+q+'&output=embed';
+}
+$('km').addEventListener('input',calc);
+$('origin').addEventListener('change',updateMap);
+$('dest').addEventListener('change',updateMap);
+$('when').addEventListener('change',()=>{$('dateWrap').style.display=$('when').value==='Agendar'?'grid':'none';});
+$('confirm').addEventListener('click',()=>{
+  const name=$('name').value.trim(), phone=$('phone').value.trim(), origin=$('origin').value.trim(), dest=$('dest').value.trim();
+  const {km,total}=calc(); const when=$('when').value==='Agora'?'Agora':$('date').value.replace('T',' ');
+  if(!name||!phone||!origin||!dest||km<=0||($('when').value==='Agendar'&&!$('date').value)){
+    $('err').textContent='Preencha nome, telefone, origem, destino, distância e, se for agendada, a data e o horário.';$('err').classList.add('show');return;
+  }
+  $('err').classList.remove('show');
+  const ret=$('returnRide').checked?'Sim':'Não', note=$('note').value.trim();
+  const rows=[['Passageiro',name],['Telefone',phone],['Origem',origin],['Destino',dest],['Distância',km.toLocaleString('pt-BR')+' km'],['Quando',when],['Volta',ret],['Estimativa',money(total)]];
+  $('summaryRows').innerHTML=rows.map(r=>'<div class="row"><span>'+r[0]+'</span><strong>'+r[1]+'</strong></div>').join('');
+  const msg='Olá Erivelton! Quero solicitar uma corrida.\n\nNome: '+name+'\nTelefone: '+phone+'\nOrigem: '+origin+'\nDestino: '+dest+'\nDistância: '+km.toLocaleString('pt-BR')+' km\nQuando: '+when+'\nCorrida de volta: '+ret+'\nValor estimado: '+money(total)+(note?'\nObservação: '+note:'');
+  $('wa').href='https://wa.me/5511978305714?text='+encodeURIComponent(msg);
+  $('summary').classList.add('show'); $('summary').scrollIntoView({behavior:'smooth'});
+});
+updateMap(); calc();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+</script>
+</body>
+</html>
